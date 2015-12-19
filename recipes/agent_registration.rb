@@ -60,7 +60,7 @@ interface_list.each do |interface|
   end
 end
 
-libzabbix_host node['hostname'] do
+libzabbix_host "#{node['hostname']}.#{node.chef_environment}" do
   create_missing_groups true
   server_connection connection_info
   parameters(
