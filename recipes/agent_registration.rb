@@ -29,7 +29,7 @@ interface_definitions = {
     useip: 1,
     ip: ip_address,
     dns: node['fqdn'],
-    port: node['zabbix']['agent']['zabbix_agent_port']
+    port: node['zabbix']['agent']['listen_port']
   },
   jmx: {
     type: 4,
