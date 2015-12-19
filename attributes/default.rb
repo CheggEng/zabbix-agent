@@ -109,6 +109,20 @@ default['zabbix']['agent']['tar_file'] = tar
 case node['platform']
 when 'ubuntu', 'debian'
   default['zabbix']['agent']['package']['repo_uri'] = "http://repo.zabbix.com/zabbix/2.4/#{node['platform']}/"
+  default['zabbix']['agent']['non-supported']['repo_uri'] = "http://repo.zabbix.com/zabbix/2.4/#{node['platform']}/"
+  default['zabbix']['agent']['package']['repo_key'] = 'http://repo.zabbix.com/zabbix-official-repo.key'
+when 'redhat', 'centos', 'scientific', 'oracle', 'amazon'
+  default['zabbix']['agent']['package']['repo_uri'] = 'http://repo.zabbix.com/zabbix/2.4/rhel/$releasever/$basearch/'
+  default['zabbix']['agent']['non-supported']['repo_uri'] = 'http://repo.zabbix.com/non-supported/rhel/$releasever/$basearch/'
+  default['zabbix']['agent']['package']['repo_key'] = 'http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX'
+when 'fedora'
+  default['zabbix']['agent']['package']['repo_uri'] = 'http://repo.zabbix.com/zabbix/2.4/rhel/7/$basearch/'
+  default['zabbix']['agent']['non-supported']['repo_uri'] = 'http://repo.zabbix.com/non-supported/rhel/7/$basearch/'
+  default['zabbix']['agent']['package']['repo_key'] = 'http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX'
+end
+
+when 'ubuntu', 'debian'
+  default['zabbix']['agent']['package']['repo_uri'] = "http://repo.zabbix.com/zabbix/2.4/#{node['platform']}/"
   default['zabbix']['agent']['package']['repo_key'] = 'http://repo.zabbix.com/zabbix-official-repo.key'
 when 'redhat', 'centos', 'scientific', 'oracle', 'amazon'
   default['zabbix']['agent']['package']['repo_uri'] = 'http://repo.zabbix.com/zabbix/2.4/rhel/$releasever/$basearch/'
