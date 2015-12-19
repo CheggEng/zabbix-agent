@@ -4,7 +4,7 @@
 #
 # Apache 2.0
 #
-node = node['zabbix']
+zabbix_server = node['zabbix']
 connection_info = {
   url: "http://#{zabbix_server['zabbix']['web']['fqdn']}/api_jsonrpc.php",
   user: zabbix_server['zabbix']['web']['login'],
