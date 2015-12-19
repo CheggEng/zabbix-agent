@@ -69,7 +69,7 @@ libzabbix_host node['hostname'] do
     templates: node['zabbix']['agent']['templates'],
     interfaces: interface_data
   )
-  action :nothing
+  action :create_or_update
 end
 
 #log 'Delay agent registration to wait for server to be started' do
