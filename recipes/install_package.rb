@@ -35,7 +35,7 @@ else
     yum_repository 'zabbix-non-supported' do
       repositoryid 'zabbix-non-supported'
       description 'Zabbix Official Repository non-supported - $basearch'
-      baseurl node['zabbix']['agent']['package']['repo_uri']
+      baseurl node['zabbix']['agent']['non-supported']['repo_uri']
       gpgkey node['zabbix']['agent']['package']['repo_key']
       sslverify false
       action :create
