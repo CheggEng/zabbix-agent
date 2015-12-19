@@ -65,8 +65,8 @@ libzabbix_host "#{node['hostname']}.#{node.chef_environment}" do
   server_connection connection_info
   parameters(
     host: node['hostname'],
-    groupNames: node['zabbix']['agent']['groups'],
-    templates: node['zabbix']['agent']['templates'],
+    groupNames: node['zabbix']['agent']['groups'] || [],
+    templates: node['zabbix']['agent']['templates'] || [],
     interfaces: interface_data
   )
   action :create_or_update
