@@ -63,14 +63,16 @@ interface_list.each do |interface|
   elsif jmx_interface_definitions.key?(interface.to_sym)
     if node['zabbix']['agent']['jmx_port'].kind_of?(Array)
 
-      node['zabbix']['agent']['jmx_port'].each do |port|
+      node['zabbix']['agent']['jmx_port'].each do |p|
         jmx_int = jmx_interface_definitions[interface.to_sym]
         if @jmx_main
           @jmx_main = false
         else
           jmx_int[:main] = 0
         end
-        jmx_int[:port] = port
+        jmx_int[:port] = p
+        pp "Adding interfave"
+        pp jmx_int
         interface_data.push(jmx_int)
       end
     else
