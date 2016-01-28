@@ -82,6 +82,8 @@ interface_list.each do |interface|
   end
 end
 
+pp "Debug Zabbix interface configuration"
+pp interface_data
 
 libzabbix_host node['fqdn'] do
   create_missing_groups true
