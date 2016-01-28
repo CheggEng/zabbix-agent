@@ -1,4 +1,4 @@
-# Author:: Guilhem Lettron (<guilhem.lettron@youscribe.com>)
+  # Author:: Guilhem Lettron (<guilhem.lettron@youscribe.com>)
 # Cookbook Name:: zabbix-agent
 # Recipe:: agent_registration
 #
@@ -31,14 +31,6 @@ interface_definitions = {
     dns: node['fqdn'],
     port: node['zabbix']['agent']['listen_port']
   },
-  jmx: {
-    type: 4,
-    main: 1,
-    useip: 1,
-    ip: ip_address,
-    dns: node['fqdn'],
-    port: node['zabbix']['agent']['jmx_port']
-  },
   snmp: {
     type: 2,
     main: 1,
@@ -49,12 +41,34 @@ interface_definitions = {
   }
 }
 
+#We can have multiple jmx interfaces, handle differently
+jmx_interface_definitions = {
+  jmx: {
+    type: 4,
+    main: 1,
+    useip: 1,
+    ip: ip_address,
+    dns: node['fqdn'],
+    port: node['zabbix']['agent']['jmx_port']
+  }
+}
+
 interface_list = node['zabbix']['agent']['interfaces']
 
 interface_data = []
 interface_list.each do |interface|
   if interface_definitions.key?(interface.to_sym)
     interface_data.push(interface_definitions[interface.to_sym])
+  elsif jmx_interface_definitions.key?(interface.to_sym)
+    if node['zabbix']['agent']['jmx_port'].kind_of?(Array)
+      node['zabbix']['agent']['jmx_port'].each do |port|
+        jmx_int = jmx_interface_definitions[interface.to_sym]
+        jmx_int['port'] = port
+        interface_data.push(jmx_int)
+      end
+    else
+      interface_data.push(jmx_interface_definitions[interface.to_sym])
+    end
   else
     Chef::Log.warn "WARNING: Interface #{interface} is not defined in agent_registration.rb"
   end
