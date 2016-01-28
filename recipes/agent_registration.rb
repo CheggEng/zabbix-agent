@@ -73,6 +73,8 @@ interface_list.each do |interface|
     Chef::Log.warn "WARNING: Interface #{interface} is not defined in agent_registration.rb"
   end
 end
+pp "Debug Interfaces"
+pp interface_data
 
 libzabbix_host node['fqdn'] do
   create_missing_groups true
