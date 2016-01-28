@@ -73,11 +73,11 @@ interface_list.each do |interface|
         jmx_int[:port] = p
         pp "Adding interfave"
         pp jmx_int
-        interface_data.push(jmx_int)
+        interface_data << jmx_int
       end
     else
 
-      interface_data.push(jmx_interface_definitions[interface.to_sym])
+      interface_data << jmx_interface_definitions[interface.to_sym]
     end
   else
     Chef::Log.warn "WARNING: Interface #{interface} is not defined in agent_registration.rb"
