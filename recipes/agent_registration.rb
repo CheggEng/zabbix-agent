@@ -64,7 +64,7 @@ interface_list.each do |interface|
     if node['zabbix']['agent']['jmx_port'].kind_of?(Array)
 
       node['zabbix']['agent']['jmx_port'].each do |p|
-        jmx_int = jmx_interface_definitions[interface.to_sym]
+        jmx_int = jmx_interface_definitions[interface.to_sym].dup
         if @jmx_main
           @jmx_main = false
         else
