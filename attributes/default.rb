@@ -37,7 +37,7 @@ else
   default['zabbix']['agent']['user']         = 'zabbix'
   default['zabbix']['agent']['group']        = node['zabbix']['agent']['user']
 end
-default['zabbix']['agent']['timeout']        = '3'
+default['zabbix']['agent']['timeout']        = '30'
 default['zabbix']['agent']['listen_port']    = '10050'
 default['zabbix']['agent']['interfaces']     = ['zabbix_agent']
 default['zabbix']['agent']['jmx_port']       = '10052'
