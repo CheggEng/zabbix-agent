@@ -91,6 +91,7 @@ libzabbix_host node['fqdn'] do
     host: node['hostname'],
     groupNames: node['zabbix']['agent']['groups'] || [],
     templates: node['zabbix']['agent']['templates'] || [],
+    proxy:  node['zabbix']['agent']['proxy_host'] || '',
     interfaces: interface_data
   )
   action :create_or_update
