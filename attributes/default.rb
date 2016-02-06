@@ -28,7 +28,7 @@ end
 default['zabbix']['agent']['version']           = '2.4.4'
 default['zabbix']['agent']['servers']           = ['zabbix']
 default['zabbix']['agent']['servers_active']    = ['zabbix']
-
+default['zabbix']['agent']['proxy_host']        = nil
 # primary config options
 if node['platform'] == 'windows'
   default['zabbix']['agent']['user']         = 'Administrator'
