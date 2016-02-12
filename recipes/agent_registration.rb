@@ -6,7 +6,7 @@
 #
 
 connection_info = {
-  url: "http://#{node['zabbix']['web']['fqdn']}/api_jsonrpc.php",
+  url: "https://#{node['zabbix']['web']['fqdn']}/api_jsonrpc.php",
   user: node['zabbix']['web']['login'],
   password: node['zabbix']['web']['password']
 }

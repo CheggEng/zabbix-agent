@@ -80,7 +80,7 @@ unless node['platform'] == 'windows'
   # default['zabbix']['agent']['conf']['PidFile']  = '/tmp/zabbix_agentd.pid'
   default['zabbix']['agent']['conf']['PidFile']  = '/var/run/zabbix/zabbix_agentd.pid'
 end
-default['zabbix']['agent']['conf']['RefreshActiveChecks']  = '120'
+default['zabbix']['agent']['conf']['RefreshActiveChecks']  = '60'
 # default['zabbix']['agent']['conf']['Server']  = nil #default
 default['zabbix']['agent']['conf']['Server']       = 'zabbix'
 default['zabbix']['agent']['conf']['ServerActive'] = nil
