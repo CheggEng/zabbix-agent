@@ -95,6 +95,7 @@ libzabbix_host node['fqdn'] do
     interfaces: interface_data
   )
   action :create_or_update
+  ignore_failure true
 end
 
 #log 'Delay agent registration to wait for server to be started' do
