@@ -41,5 +41,8 @@ else
       action :create
     end
   end
-  package 'zabbix-agent'
+  package 'zabbix-agent' do
+    version node ['zabbix']['agent']['version']
+    action :upgrade
+  end
 end
