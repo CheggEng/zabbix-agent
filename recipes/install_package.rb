@@ -42,7 +42,7 @@ else
     end
   end
   package 'zabbix-agent' do
-    version node ['zabbix']['agent']['version']
+    version node ['zabbix']['agent']['version'].to_i
     action :upgrade
   end
 end
