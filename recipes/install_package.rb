@@ -23,13 +23,24 @@ else
     end
   when 'redhat', 'centos', 'scientific', 'oracle', 'amazon', 'fedora'
     include_recipe 'yum'
-    yum_repository 'zabbix' do
-      repositoryid 'zabbix'
-      description 'Zabbix Official Repository'
-      baseurl node['zabbix']['agent']['package']['repo_uri']
-      gpgkey node['zabbix']['agent']['package']['repo_key']
-      sslverify false
-      action :create
+    if node['yum_el_version'].to_i = 5
+      yum_repository 'zabbix' do
+        repositoryid 'zabbix'
+        description 'Zabbix Official Repository'
+        baseurl node['zabbix']['agent']['package']['repo_uri']
+        gpgcheck false
+        sslverify false
+        action :create
+      end
+    else
+      yum_repository 'zabbix' do
+        repositoryid 'zabbix'
+        description 'Zabbix Official Repository'
+        baseurl node['zabbix']['agent']['package']['repo_uri']
+        gpgkey node['zabbix']['agent']['package']['repo_key']
+        sslverify false
+        action :create
+      end
     end
 
     yum_repository 'zabbix-non-supported' do
