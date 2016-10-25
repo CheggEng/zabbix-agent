@@ -23,7 +23,7 @@ else
     end
   when 'redhat', 'centos', 'scientific', 'oracle', 'amazon', 'fedora'
     include_recipe 'yum'
-    if node['yum_el_version'].to_i = 5
+    if node['yum_el_version'].to_i == 5
       yum_repository 'zabbix' do
         repositoryid 'zabbix'
         description 'Zabbix Official Repository'
